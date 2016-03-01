@@ -1,0 +1,7 @@
+---
+- name: extensions | intl
+  apt: pkg=php5-intl state=latest
+
+- name: extensions | curl
+  apt: pkg=php5-curl state=latest
+

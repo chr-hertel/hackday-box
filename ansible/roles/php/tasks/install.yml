@@ -1,0 +1,14 @@
+---
+- name: install | Add ppa repo
+  apt_repository: repo=ppa:ondrej/php5-5.6
+
+- name: install | Update apt
+  apt: update_cache=yes
+
+- name: install | php5-dev
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - gcc
+    - php5
+    - php5-dev
+    - libapache2-mod-php5

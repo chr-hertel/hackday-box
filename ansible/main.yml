@@ -6,3 +6,5 @@
   roles:
     - common
     - apache
+    - php
+    - composer

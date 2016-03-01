@@ -1,0 +1,7 @@
+---
+- name: config | Add devbox ini
+  template: src=devbox.tpl dest=/etc/php5/mods-available/devbox.ini
+
+- name: config | Enable devbox ini
+  command: php5enmod devbox
+  notify: restart apache
