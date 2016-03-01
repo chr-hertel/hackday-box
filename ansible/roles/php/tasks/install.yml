@@ -1,0 +1,14 @@
+---
+- name: install | Add ppa repo
+  apt_repository: repo=ppa:ondrej/php
+
+- name: install | Update apt
+  apt: update_cache=yes
+
+- name: install | php7-dev
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - gcc
+    - php7.0
+    - php7.0-dev
+    - libapache2-mod-php7.0
