@@ -1,0 +1,6 @@
+---
+- name: install | apache2
+  apt: pkg=apache2 state=latest
+
+- name: install | Enable modrewrite
+  command: a2enmod rewrite

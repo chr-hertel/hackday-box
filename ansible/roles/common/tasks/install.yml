@@ -1,0 +1,13 @@
+---
+- name: install | Update cache
+  apt: update_cache=yes
+
+- name: install | System packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - curl
+    - wget
+    - python-software-properties
+    - git
+    - htop
+    - acl
