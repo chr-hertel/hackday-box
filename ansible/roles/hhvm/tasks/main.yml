@@ -1,0 +1,11 @@
+---
+- name: install hhvm gpg key
+  apt_key: url=http://dl.hhvm.com/conf/hhvm.gpg.key state=present
+
+- name: add hhvm deb repository
+  apt_repository: repo='deb http://dl.hhvm.com/ubuntu trusty main' state=present
+
+- name: install hhvm packages
+  apt: pkg={{ item }} state=latest update_cache=yes force=yes
+  with_items:
+      - hhvm

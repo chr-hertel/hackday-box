@@ -1,0 +1,19 @@
+---
+- name: install | software
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - re2c
+    - php5-json
+    - libpcre3-dev
+    - zip
+
+- name: zephir | download
+  unarchive: src=https://github.com/phalcon/zephir/archive/master.zip
+             dest=/home/vagrant
+             copy=no
+             creates=/home/vagrant/zephir-master
+
+- name: zephir | install
+  command: ./install -c
+  args:
+    chdir: /home/vagrant/zephir-master
