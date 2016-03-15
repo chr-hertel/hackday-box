@@ -1,0 +1,10 @@
+date.timezone = "Europe/Berlin"
+display_errors = On
+short_open_tag = Off
+phar.readonly = Off
+memory_limit = 512M
+upload_max_filesize = 512M
+post_max_size = 1024M
+error_reporting = E_ALL
+max_execution_time = 300
+max_input_time = 600

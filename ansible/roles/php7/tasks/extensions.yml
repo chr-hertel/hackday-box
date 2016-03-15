@@ -1,0 +1,6 @@
+---
+- name: extensions | intl
+  apt: pkg=php7.0-intl state=latest
+
+- name: extensions | curl
+  apt: pkg=php7.0-curl state=latest

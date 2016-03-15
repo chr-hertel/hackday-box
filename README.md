@@ -11,12 +11,12 @@ Requirements
 Idea
 ----
 
-* master branch as base
-* separate branches for
-    * php 5.6 + dev
-    * php 7.0 + dev
-    * hhvm (TODO)
-    * zephir (TODO)
+* separate vm for
+    * php 5.6 + dev -> php5
+    * php 7.0 + dev -> php7
+    * hhvm (TODO) -> hhvm
+    * zephir (TODO) -> zephir
+
     
 How to start
 ------------
@@ -27,16 +27,10 @@ How to start
     git clone git@github.com:chr-hertel/hackday-box.git
     ```
     
-* checkout specific branch
+* create specific vm
 
     ```
-    git checkout php7
-    ```
-    
-* create vm
-
-    ```
-    vagrant up
+    vagrant up php5
     ```
     
 * enter vm
@@ -49,5 +43,4 @@ Sidenotes
 ---------
 
 * ensure to re-provision after checking out
-* there might be some conflicts while switching branches
 * PRs are welcome
