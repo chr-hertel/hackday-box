@@ -7,4 +7,5 @@ use Symfony\Component\Console\Application;
 
 $app = new Application('phar demo', 'dev');
 $app->add(new \PharDemo\Command\DemoCommand());
+$app->add(new \PharDemo\Command\ServerCommand());
 $app->run();

@@ -5,7 +5,7 @@
   "compactors": [
     "Herrera\\Box\\Compactor\\Php"
   ],
-  "main": "web/index.php",
+  "main": "bin/cli",
   "finder": [
     {
     "name": "*.php",
@@ -17,7 +17,5 @@
       "in": "vendor"
     }
   ],
-  "stub": true,
-  "web": true,
-  "shebang": false
+  "stub": true
 }
