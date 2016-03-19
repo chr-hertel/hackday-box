@@ -1,15 +1,16 @@
 <?php
-
-$limit = 5000000;
+$lowest = 19100000;
+$limit =  19110000;
 
 $maxOne = 1373653;
 $maxTwo = 9080191;
 $maxThree = 4759123141;
 
-echo "Limit is " .$limit.PHP_EOL;
+echo "Range is " .$lowest.' - '.$limit.PHP_EOL;
+echo "Amount of numbers to check " .($limit - $lowest).PHP_EOL;
 
 $start = microtime(true);
-for($number=5;$number<$limit;$number++) {
+for($number=$lowest;$number<$limit;$number++) {
     $isPrime = false;
 
     if($number < $maxOne){
@@ -21,10 +22,11 @@ for($number=5;$number<$limit;$number++) {
     }
     //echo "Is " . $number . " a prime? " . ($isPrime ? 'yes':'no').PHP_EOL;
 }
-echo 'c needed for '.$limit.':  ' . (microtime(true)-$start).PHP_EOL;
+$cNeeded = microtime(true)-$start;
+echo 'c needed for ' . $cNeeded.PHP_EOL;
 
 $start = microtime(true);
-for($number=5;$number<$limit;$number++) {
+for($number=$lowest;$number<$limit;$number++) {
     $isPrime = false;
     if($number < $maxOne){
         $isPrime = pmiller_rabin_primality_test($number,2) && pmiller_rabin_primality_test($number,3);
@@ -35,11 +37,14 @@ for($number=5;$number<$limit;$number++) {
     }
     //echo "Is " . $number . " a prime? " . ($isPrime ? 'yes':'no').PHP_EOL;
 }
-echo 'php needed for '.$limit.':' . (microtime(true)-$start).PHP_EOL;
+$phpNeeded=microtime(true)-$start;
+echo 'php needed for ' . $phpNeeded.PHP_EOL;
 
 
-$start = microtime(true);
-for($number=5;$number<$limit;$number++) {
+echo "c is " .($phpNeeded / $cNeeded) . " times faster".PHP_EOL;
+echo "comparing results".PHP_EOL;
+
+for($number=$lowest;$number<$limit;$number++) {
     $isPrimePHP = false;
     if($number < $maxOne){
         $isPrime = miller_rabin_primality_test($number,2) && miller_rabin_primality_test($number,3);
@@ -56,10 +61,9 @@ for($number=5;$number<$limit;$number++) {
         echo "Got different resuts for " . $number . ' c: '. $isPrime .' != php: ' . $isPrimePHP.PHP_EOL;
     }
 }
+echo "done".PHP_EOL;
 
-echo 'comparision needed for '.$limit.':' . (microtime(true)-$start).PHP_EOL;
-
-
+// https://rosettacode.org/wiki/Miller%E2%80%93Rabin_primality_test#PHP
 function pmiller_rabin_primality_test($n, $k) {
     if ($n == 2)
         return true;

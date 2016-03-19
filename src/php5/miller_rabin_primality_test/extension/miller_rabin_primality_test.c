@@ -39,7 +39,7 @@ zend_module_entry miller_rabin_primality_test_module_entry = {
 
 ZEND_GET_MODULE(miller_rabin_primality_test)
 
-// implementation of a custom my_function()
+// implementation of a custom php function()
 PHP_FUNCTION(miller_rabin_primality_test)
 {
 
@@ -55,8 +55,12 @@ PHP_FUNCTION(miller_rabin_primality_test)
     }
     RETURN_FALSE;
 }
-
+//https://de.wikipedia.org/wiki/Miller-Rabin-Test#Implementierung
 int mrt (const uint32_t n, const uint32_t a) { // n ungerade, 1 < a < n-1
+
+    if(n % 2 == 0){
+        return 0;
+    }
 
     const uint32_t n1 = n - 1;
     uint32_t d = n1 >> 1;
