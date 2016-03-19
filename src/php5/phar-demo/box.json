@@ -1,0 +1,23 @@
+{
+  "alias": "demo.phar",
+  "output": "demo.phar",
+  "chmod": "0755",
+  "compactors": [
+    "Herrera\\Box\\Compactor\\Php"
+  ],
+  "main": "web/index.php",
+  "finder": [
+    {
+    "name": "*.php",
+    "in": "src"
+    },
+    {
+      "name": "*.*",
+      "exclude": ["Tests"],
+      "in": "vendor"
+    }
+  ],
+  "stub": true,
+  "web": true,
+  "shebang": false
+}
