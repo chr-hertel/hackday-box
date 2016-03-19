@@ -11,11 +11,13 @@ extern zend_module_entry hello_world_module_entry;
 
 // declaration of a custom hello_world()
 PHP_FUNCTION(hello_world);
+PHP_FUNCTION(hello_name);
 
 // list of custom PHP functions provided by this extension
 // set {NULL, NULL, NULL} as the last record to mark the end of list
 static zend_function_entry hello_world_functions[] = {
     PHP_FE(hello_world, NULL)
+    PHP_FE(hello_name, NULL)
     {NULL, NULL, NULL}
 };
 
@@ -43,4 +45,21 @@ ZEND_GET_MODULE(hello_world)
 PHP_FUNCTION(hello_world)
 {
     RETURN_STRING("Hello world!", 1);
+}
+
+PHP_FUNCTION(hello_name)
+{
+    char *name;
+    int name_len;
+    char result[0];
+
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &name, &name_len) == FAILURE) {
+        RETURN_NULL();
+    }
+
+
+    php_sprintf(result, "Hello %s", name);
+    RETURN_STRING(result, 1);
+
 }
